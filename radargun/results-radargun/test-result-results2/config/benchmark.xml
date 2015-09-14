@@ -1,0 +1,49 @@
+<bench-config>
+   <master
+         bindAddress="${127.0.0.1:master.address}"
+         port="${21032:master.port}"/>
+   <benchmark
+         initSize="${10:Islaves}"
+         maxSize="${10:slaves}"
+         increment="1">
+      <DestroyWrapper
+            runOnAllSlaves="true"/>
+      <StartCluster
+            staggerSlaveStartup="true"
+            delayAfterFirstSlaveStarts="5000"
+            delayBetweenStartingSlaves="1000"/>
+      <ClusterValidation
+            passiveReplication="false"
+            partialReplication="true"/>
+      <BTTPopulation
+            threadMigration="true"
+            ghostReads="true"
+            colocation="true"
+            replicationDegrees="true"
+            intraNodeConc="false"
+		  lowerBound="8"
+            keysRange="1000000"
+            workload="a"
+            keysSize="1000000" />
+      <CacheSize
+            statName="CACHE_SIZE_BEFORE_BENCH" />
+      <BTTBenchmark
+            readOnlyPerc="80"
+            threads="1"
+		  emulation="none"
+            keysSize="1000000"
+            keysRange="1000000"
+            seconds="60" />
+      <CacheSize
+            statName="CACHE_SIZE_AFTER_BENCH" />
+      <CsvReportGeneration/>
+   </benchmark>
+   <products>
+      <infinispan4>
+         <config name="ispn.xml"/>
+      </infinispan4>
+   </products>
+   <reports>
+      <report name="Reports" />
+   </reports>
+</bench-config>
