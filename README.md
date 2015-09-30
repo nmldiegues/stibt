@@ -32,3 +32,5 @@ $11 number of threads - unused in the current implementation
 
 When using this work, please cite accordingly: 
  Nuno Diegues and Paolo Romano, "STI-BT: A Scalable Transactional Index", Proceedings of the International Conference on Distributed and Computer Systems, ICDCS 2014
+
+This work was supported by national funds through Fundação para a Ciência e Tecnologia (FCT) with reference UID/CEC/50021/2013 and by the GreenTM project (EXPL/EEI-ESS/0361/2013).
